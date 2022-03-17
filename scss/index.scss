@@ -1,0 +1,545 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap");
+
+// variables
+$mainFont: "Nunito";
+$black: #000;
+$bgColor1: #111;
+$bgColor2: #222;
+$bgColor3: #333;
+$headingColor: #fff;
+
+$primaryColor: #a79a2d;
+$darkPrimaryColor: #817824;
+$textShadow: 0.2rem 0.2rem 0.2rem $black;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  font-family: $mainFont;
+  font-weight: 400;
+}
+
+html {
+  font-size: 62.5%;
+  text-transform: capitalize;
+}
+
+// utilities
+.heading {
+  font-size: 9rem;
+  font-weight: 900;
+  color: $headingColor;
+  text-align: center;
+  letter-spacing: 0.5rem;
+  text-shadow: $textShadow;
+}
+
+// navbar
+.navbar {
+  width: 100%;
+  height: 14rem;
+  background-color: $black;
+  position: fixed;
+  top: -14rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  box-shadow: 0.2rem 0.2rem 0.2rem $black;
+  transition: all 0.4s;
+
+  &.change {
+    top: 0;
+    transition: top 0.4s 0.2s;
+
+    .navbar-link {
+      opacity: 1;
+      transition: opacity 0.4s;
+
+      &:nth-child(1) {
+        transition-delay: 0.4s;
+      }
+
+      &:nth-child(2) {
+        transition-delay: 0.5s;
+      }
+
+      &:nth-child(3) {
+        transition-delay: 0.6s;
+      }
+
+      &:nth-child(4) {
+        transition-delay: 0.7s;
+      }
+
+      &:nth-child(5) {
+        transition-delay: 0.8s;
+      }
+    }
+  }
+
+  &-link {
+    color: #aaa;
+    margin: 0 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.3s;
+
+    &:hover {
+      color: #fff;
+    }
+
+    i {
+      font-size: 5rem;
+    }
+
+    span {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: 0.5rem;
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+.menu {
+  width: 4rem;
+  height: 6rem;
+  background-color: $black;
+  position: fixed;
+  top: 1rem;
+  left: 5rem;
+  border-radius: 30rem 30rem 15rem 15rem;
+  box-shadow: 0.1rem 0.1rem 0.1rem #000, -0.1rem -0.1rem 0.1rem #000;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.4s 0.2s;
+
+  &.change {
+    top: 15rem;
+    transition: top 0.4s;
+  }
+
+  &::before {
+    content: "";
+    width: 0.3rem;
+    height: 15rem;
+    background-color: $black;
+    position: absolute;
+    top: -15rem;
+    left: calc(50% - 0.15rem);
+    box-shadow: 0.1rem 0 0.1rem #000;
+  }
+}
+// end navbar
+
+//header
+.header {
+  width: 100%;
+  height: 100vh;
+  background-color: $bgColor3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  .icons i {
+    font-size: 30rem;
+    color: $primaryColor;
+    position: absolute;
+    transition: transform 0.3s linear;
+    transform: translate(-50%, -50%) scale(0);
+    text-shadow: $textShadow;
+
+    &.change {
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 0.3s 0.3s;
+    }
+  }
+}
+// end header
+
+// cards section
+.cards {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10rem 0;
+  background-color: $bgColor2;
+
+  .cards-container {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    .card {
+      flex: 1 1 30rem;
+      position: relative;
+      max-width: 30rem;
+      background-color: $primaryColor;
+      padding: 4rem;
+      margin-block: 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 1rem 1rem 1rem $black;
+      transition: all 0.5s linear;
+      transform: rotateY(20deg) skewX(-2deg);
+
+      &:hover {
+        transform: rotateY(20deg) skewX(-2deg) translateY(-3rem);
+        box-shadow: 2rem 2rem 2rem $black;
+      }
+
+      &::before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 1rem;
+        background-color: $darkPrimaryColor;
+        top: 0;
+        left: -1rem;
+        transform: skewY(45deg);
+        transform-origin: right;
+        box-shadow: -0.1rem -0.1rem 0.1rem $black;
+      }
+
+      &::after {
+        position: absolute;
+        content: "";
+        height: 1rem;
+        width: 100%;
+        background-color: $darkPrimaryColor;
+        top: -1rem;
+        left: 0;
+        transform: skewX(45deg);
+        transform-origin: bottom;
+        box-shadow: -0.1rem -0.1rem 0.1rem $black;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .title {
+        font-size: 3rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.5rem;
+        color: $bgColor1;
+        margin: 2rem 0;
+        text-shadow: $textShadow;
+      }
+
+      .btn {
+        width: 70%;
+        background-color: $bgColor1;
+        color: #888;
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: 0.2rem;
+        padding: 0.5rem 0;
+        cursor: pointer;
+
+        border-radius: 2rem;
+        box-shadow: -0.2rem -0.2rem 0.2rem $black;
+      }
+    }
+  }
+}
+// end cards section
+
+// gallery section
+.gallery {
+  background-color: $bgColor3;
+  padding: 5rem 0;
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 5rem;
+
+    .link {
+      position: relative;
+      margin: 4rem 1rem;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 2vw;
+        left: 80%;
+        width: 0.2rem;
+        height: 0;
+        background-color: #fff;
+        z-index: 10;
+        transition: all 0.5s;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 30%;
+        left: 2rem;
+        width: 0;
+        height: 0.2rem;
+        background-color: #fff;
+        transition: all 0.5s;
+      }
+
+      .img {
+        width: 24vw;
+        height: 15vw;
+        object-fit: cover;
+        transition: all 0.3s;
+        box-shadow: 0.3rem 0.3rem 0.1rem #e92929, 0.5rem 0.5rem 0.1rem #a2e946,
+          0.7rem 0.7rem 0.1rem #297ce9, 0.9rem 0.9rem 0.1rem #e92999;
+      }
+
+      .name {
+        position: absolute;
+        top: 3rem;
+        left: 3rem;
+        font-size: 3rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        color: $headingColor;
+        width: 0;
+        overflow: hidden;
+        transition: width 0.2s;
+      }
+
+      .description {
+        position: absolute;
+        bottom: 5rem;
+        left: 2rem;
+        width: 70%;
+        font-size: 2rem;
+        font-weight: 300;
+        letter-spacing: 0.1rem;
+        text-transform: uppercase;
+        color: $headingColor;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s;
+      }
+
+      &:hover {
+        &::before {
+          height: 80%;
+        }
+
+        &::after {
+          width: 90%;
+        }
+
+        .name {
+          width: 100%;
+          transition: all 1.5s 0.5s;
+        }
+
+        .description {
+          opacity: 1;
+          visibility: visible;
+          transition: all 1s 1s;
+        }
+
+        .img {
+          filter: blur(0.5rem);
+          opacity: 0.5;
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+// end gallery section
+
+// footer
+.footer {
+  width: 100%;
+  height: 30vh;
+  background-color: $bgColor2;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 3rem;
+  position: relative;
+
+  .content {
+    text-transform: uppercase;
+
+    .title {
+      font-size: 4rem;
+      font-weight: 400;
+      color: $primaryColor;
+    }
+
+    .paragraph {
+      font-size: 1.5rem;
+      color: #888;
+    }
+  }
+
+  .signup-form {
+    display: flex;
+    align-items: center;
+
+    .input {
+      width: 35rem;
+      height: 4rem;
+      padding: 1rem;
+      border: 0.2rem solid $primaryColor;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1rem;
+      color: $primaryColor;
+
+      &::placeholder {
+        color: $primaryColor;
+      }
+    }
+
+    .btn {
+      position: relative;
+      left: 0.4.5rem;
+      width: 4rem;
+      height: 4rem;
+      background-color: $bgColor3;
+      color: $primaryColor;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+  }
+
+  .copyright {
+    position: absolute;
+    bottom: 3rem;
+    font-size: 1.7rem;
+    font-weight: 200;
+    color: #eee;
+    letter-spacing: 0.1rem;
+    padding-top: 3rem;
+    width: 100%;
+    text-align: center;
+    border-top: 0.1rem solid #888;
+  }
+}
+// end footer
+
+// Responsiveness
+@media (max-width: 1400px) {
+  html {
+    font-size: 50%;
+  }
+
+  .cards {
+    height: auto;
+    padding: 10rem 0 12rem 0;
+
+    &.container {
+      margin-top: 10rem;
+    }
+  }
+
+  .gallery .items {
+    .link {
+      width: 40rem;
+      height: 25rem;
+      margin: 5rem;
+
+      .img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .heading {
+    font-size: 9rem;
+    margin: 0 5rem;
+  }
+
+  .header {
+    .icons i {
+      font-size: 25rem;
+    }
+  }
+
+  .footer {
+    height: 30rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    justify-content: space-around;
+    &-link {
+      margin: 2rem;
+
+      i {
+        font-size: 4rem;
+      }
+
+      span {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .heading {
+    font-size: 7rem;
+    margin: 0 10rem;
+  }
+
+  .header {
+    .icons {
+      font-size: 20rem;
+    }
+  }
+
+  .menu {
+    left: 2rem;
+  }
+
+  .footer {
+    height: 40rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .content {
+      margin-bottom: 6rem;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  html {
+    font-size: 40%;
+  }
+
+  .navbar {
+    &-link {
+      margin: 0 0.7rem;
+    }
+  }
+}
